@@ -1,10 +1,8 @@
 import axios from "axios";
 
-// URL base da sua API
 const BASE_URL = "https://api.staging.aca.so";
 
-// Função para cadastrar um usuário
-export async function signupUser(firstName, lastName, email, password) {  
+export async function signupUser(firstName, lastName, email, password) {
   try {
     const response = await axios.post(`${BASE_URL}/auth/sign-up`, {
       email,
@@ -14,7 +12,7 @@ export async function signupUser(firstName, lastName, email, password) {
     });
 
     if (response.status === 200) {
-      return response.data; // Ou outra ação de sucesso
+      return response.data;
     } else {
       throw new Error("Erro durante o cadastro");
     }
@@ -23,16 +21,15 @@ export async function signupUser(firstName, lastName, email, password) {
   }
 }
 
-// Função para confirmar o email
 export async function confirmEmail(confirmationCode, email) {
   try {
     const response = await axios.post(`${BASE_URL}/auth/confirm-sign-up`, {
       confirmation_code: confirmationCode,
-      email
+      email,
     });
 
     if (response.status === 200) {
-      return true; // O email foi confirmado com sucesso
+      return true;
     } else {
       throw new Error("Erro ao confirmar o email");
     }
@@ -41,15 +38,34 @@ export async function confirmEmail(confirmationCode, email) {
   }
 }
 
-// Função para reenviar o código de confirmação
-export async function resendConfirmationCode(email) {
+export async function loginUser(email, password) {
   try {
-    const response = await axios.post(`${BASE_URL}/auth/resend-confirmation-code`, {
-      email,
+    const response = await axios.post("https://api.staging.aca.so/auth/login", {
+      email: email,
+      password: password,
     });
 
     if (response.status === 200) {
-      return true; // O código foi reenviado com sucesso
+      return response.data;
+    } else {
+      throw new Error("Erro durante o login");
+    }
+  } catch (error) {
+    throw new Error("Erro na chamada da API: " + error.message);
+  }
+}
+
+export async function resendConfirmationCode(email) {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/auth/resend-confirmation-code`,
+      {
+        email,
+      }
+    );
+
+    if (response.status === 200) {
+      return true;
     } else {
       throw new Error("Erro ao reenviar o código de confirmação");
     }
