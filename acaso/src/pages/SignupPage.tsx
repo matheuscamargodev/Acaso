@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import InputField from "../components/InputField";
 import { signupUser } from "../services/authService"; // Importe o serviço
-import { useNavigate } from 'react-router-dom';
-
-
-
+import { useNavigate } from "react-router-dom";
 
 const SignupPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -17,15 +14,13 @@ const SignupPage: React.FC = () => {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     try {
-      
       const response = await signupUser(firstName, lastName, email, password);
       setError("");
-      // Faça o redirecionamento para a página de confirmação após o sucesso
+
       navigate(`/confirmation-email?email=${email}`);
     } catch (error) {
-      // Lida com erros da API e exibe uma mensagem de erro ao usuário
       setError("Erro durante o cadastro: " + error.message);
     }
   };
@@ -91,19 +86,20 @@ const SignupPage: React.FC = () => {
             value={confirmPassword}
             onChange={setConfirmPassword}
           />
-
-          <button
-            type="submit"
-            className="bg-white mt-16 text-black  rounded-full"
-          >
-            <span className="p-4">Criar minha conta aca.so</span>
-          </button>
-          <button
-            type="button"
-            className="bg-black bg-transparentx mt-6 text-white  rounded-full"
-          >
-            <span className="p-14 text-sm">Voltar ao login</span>
-          </button>
+          <div className="inline-grid">
+            <button
+              type="submit"
+              className="bg-white mt-16 text-black  rounded-full"
+            >
+              <span className="p-4">Criar minha conta aca.so</span>
+            </button>
+            <button
+              type="button"
+              className="bg-black bg-transparentx mt-6 text-white  rounded-full"
+            >
+              <span className="p-14 text-sm">Voltar ao login</span>
+            </button>
+          </div>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
       </div>
