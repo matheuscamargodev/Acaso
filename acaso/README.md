@@ -1,7 +1,5 @@
 # Aca.so Desafio
 
-# Projeto React
-
 Este é um projeto React para o desafio técnico aca.so
 
 # Libs Terceiras utilizadas
