@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputField from "../components/InputField";
-import { loginUser } from "../services/authService"; // Importe o serviço
+import { loginUser } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 

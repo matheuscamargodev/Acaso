@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import AppRouter from './routes/Router'; // Importe o componente AppRouter
+import AppRouter from './routes/Router'; 
 
 import './App.css'
 function App() {
