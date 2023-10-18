@@ -46,12 +46,28 @@ const ConfirmationPage: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="w-full max-w-md p-4  mt-20">
-        <div className="justify-center p-4 flex mb-10">
+    <div className="flex relative justify-center items-center h-screen bg-[#030446]">
+      <img
+        src="src/assets/ring.png"
+        alt="Imagem"
+        style={{
+          position: "absolute",
+          top: -10,
+          width: 300,
+          right: -10,
+          margin: "10px",
+        }}
+      />
+      <img
+        className="absolute w-full backover"
+        src="src/assets/gas.png"
+        alt="Imagem"
+      />
+      <div className="w-full max-w-md p-4 backoverup">
+        <div className="justify-center p-4 flex  mb-10">
           <img src="src/assets/acaso.png" alt="Imagem" />
         </div>
-        <h2 className="text-5xl mb-24 fs-10 mt-40">Confirmar E-mail</h2>
+        <h2 className="text-5xl mb-24 fs-10">Confirma E-mail</h2>
         <form onSubmit={handleConfirmEmail}>
           <InputField
             label="Código de Confirmação"

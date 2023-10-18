@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputField from "../components/InputField";
 import { signupUser } from "../services/authService"; // Importe o serviço
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignupPage: React.FC = () => {
   const [firstName, setFirstName] = useState("");
@@ -26,7 +27,7 @@ const SignupPage: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-[#030446]">
+    <div className="flex justify-center  items-center h-screen bg-[#030446]">
       <img
         src="src/assets/ring.png"
         alt="Imagem"
@@ -38,8 +39,12 @@ const SignupPage: React.FC = () => {
           margin: "10px",
         }}
       />
-
-      <div className="w-full max-w-md p-4">
+      <img
+        className="absolute w-full backover"
+        src="src/assets/gas.png"
+        alt="Imagem"
+      />
+      <div className="w-full max-w-md p-4 backoverup">
         <div className="justify-center p-4 flex  mb-10">
           <img src="src/assets/acaso.png" alt="Imagem" />
         </div>
@@ -93,12 +98,14 @@ const SignupPage: React.FC = () => {
             >
               <span className="p-4">Criar minha conta aca.so</span>
             </button>
-            <button
-              type="button"
-              className="bg-black bg-transparentx mt-6 text-white  rounded-full"
-            >
-              <span className="p-14 text-sm">Voltar ao login</span>
-            </button>
+            <Link to="/login">
+              <button
+                type="button"
+                className="bg-black bg-transparentx mt-6 text-white  rounded-full"
+              >
+                <span className="p-14 text-sm">Voltar ao login</span>
+              </button>
+            </Link>
           </div>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
