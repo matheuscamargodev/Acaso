@@ -1,8 +1,30 @@
-# React + Vite
+# Aca.so Desafio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Projeto React
 
-Currently, two official plugins are available:
+Este é um projeto React para o desafio técnico aca.so
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Libs Terceiras utilizadas
+
+ * Dayjs
+ * Tailwind
+ * Axios
+
+## Instalação
+
+Siga as etapas abaixo para configurar o projeto:
+
+1. Clone o repositório para sua máquina local:
+
+   ```bash
+   git clone https://github.com/matheuscamargodev/Acaso.git
+
+2. Instale as dependencias na raiz do projeto:
+
+    ```bash
+    npm install
+
+3. Execute o projeto com:
+
+    ```bash
+    npm run dev

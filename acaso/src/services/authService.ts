@@ -40,13 +40,39 @@ export async function confirmEmail(confirmationCode, email) {
 
 export async function loginUser(email, password) {
   try {
-    const response = await axios.post("https://api.staging.aca.so/auth/login", {
+    const response = await axios.post(`${BASE_URL}/auth/login`, {
       email: email,
       password: password,
     });
 
     if (response.status === 200) {
-      return response.data;
+      const refreshResponse = await axios.post(
+        `${BASE_URL}/auth/refresh-token`,
+        {
+          refresh_token: response.data.token.refresh_token,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${response.data.token.id_token}`,
+          },
+        }
+      );
+
+      if (refreshResponse.status === 200) {
+        const profileResponse = await axios.get(`${BASE_URL}/user/profile`, {
+          headers: {
+            Authorization: `Bearer ${refreshResponse.data.id_token}`,
+          },
+        });
+
+        if (profileResponse.status === 200) {
+          return profileResponse.data;
+        } else {
+          throw new Error("Erro ao obter o perfil do usuário");
+        }
+      } else {
+        throw new Error("Erro ao atualizar o token de atualização");
+      }
     } else {
       throw new Error("Erro durante o login");
     }
